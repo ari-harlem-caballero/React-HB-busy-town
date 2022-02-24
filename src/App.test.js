@@ -1,8 +1,24 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
+import TrafficLight from './TrafficLight';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Amazing! The alien zapped the lizard!/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders green light on click', () => {
+  render(<TrafficLight />); //do i need to import trafficeLights.js?
+
+
+  const greenLight = screen.getByTitle('green-light');
+
+
+  expect(greenLight).toBeInTheDocument(); //setLightColor to 'green', button is active
+});
+
+test('renders motorcycle to array on click', () => {
+  render(<App />); 
+
+
+  const motorcycleButton = screen.getByText(/motorcycle/i);
+
+
+  expect(motorcycleButton).toBeInTheDocument();
+  fireEvent.click(motorcycleButton);
 });
