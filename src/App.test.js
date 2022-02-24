@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import TrafficLight from './TrafficLight';
 
-test('renders component traffic light', () => {
-  render(<App />); //do i need to import trafficeLights.js?
-
-
-  const linkElement = screen.getByText(/green/i);
+test('renders green light on click', () => {
+  render(<TrafficLight />); //do i need to import trafficeLights.js?
 
 
-  expect(linkElement).toBeInTheDocument(); //setLightColor to 'green', button is active
+  const greenLight = screen.getByTitle('green-light');
+
+
+  expect(greenLight).toBeInTheDocument(); //setLightColor to 'green', button is active
 });
