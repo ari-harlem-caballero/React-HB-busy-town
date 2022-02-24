@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 import TrafficLight from './TrafficLight';
 
@@ -10,4 +10,15 @@ test('renders green light on click', () => {
 
 
   expect(greenLight).toBeInTheDocument(); //setLightColor to 'green', button is active
+});
+
+test('renders motorcycle to array on click', () => {
+  render(<App />); 
+
+
+  const motorcycleButton = screen.getByText(/motorcycle/i);
+
+
+  expect(motorcycleButton).toBeInTheDocument();
+  fireEvent.click(motorcycleButton);
 });
